@@ -40,4 +40,12 @@
     <string name="endGame_Slash"> / </string>
     <string name="endGame_TotalScore"></string>
 
+
+    <!--**
+     * ACTIVITY: In Game
+     *-->
+    <string name="settingsActivity_Title">Settings</string>
+    <string name="preferences_theme_key">app_theme</string>
+    <string name="preferences_theme_title">Application Theme</string>
+    <string name="preferences_theme_default">Default</string>
 </resources>

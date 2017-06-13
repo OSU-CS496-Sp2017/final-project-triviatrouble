@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
         // Capture references
         mSavedInstanceState = savedInstanceState;
         mBtnBegin = (Button) findViewById(R.id.btn_Main_Begin);
-//        mFabSettings = (FloatingActionButton) findViewById(R.id.fab_Main_Settings);
+        mFabSettings = (FloatingActionButton) findViewById(R.id.fab_Main_Settings);
 //        mFabLeaderboard = (FloatingActionButton) findViewById(R.id.fab_Main_Leaderboard);
 
         // Assign actions
@@ -49,15 +49,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-//        mFabSettings.setOnClickListener(new FloatingActionButton.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                Intent intent = new Intent(v.getContext(), GameSetupActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        mFabSettings.setOnClickListener(new FloatingActionButton.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(v.getContext(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //        mFabLeaderboard.setOnClickListener(new FloatingActionButton.OnClickListener()
 //        {

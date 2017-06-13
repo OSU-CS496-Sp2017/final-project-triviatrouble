@@ -137,4 +137,18 @@
         <item>multiple</item>
         <item>boolean</item>
     </string-array>
+
+
+    <!--**
+     * ACTIVITY: Preferences
+     *-->
+    <string-array name="preferences_theme_entries">
+        <item>Default</item>
+        <item>Alternative</item>
+    </string-array>
+
+    <string-array name="preferences_theme_entryValues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>
