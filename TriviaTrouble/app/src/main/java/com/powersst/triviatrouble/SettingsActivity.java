@@ -12,6 +12,24 @@ import android.support.v7.preference.PreferenceManager;
 public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        updateTheme();
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(
+                new SharedPreferences.OnSharedPreferenceChangeListener() {
+
+                    @Override
+                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                        updateTheme();
+                        recreate();
+                    }
+                }
+        );
+    }
+
+    void updateTheme()
+    {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
 
@@ -24,8 +42,5 @@ public class SettingsActivity extends AppCompatActivity {
         else{
             setTheme(R.style.Default);
         }
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
     }
 }
