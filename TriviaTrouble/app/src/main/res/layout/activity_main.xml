@@ -27,14 +27,14 @@
         android:text="@string/main_Begin_Text"
         android:textSize="28sp"/>
 
-    <android.support.design.widget.FloatingActionButton
+   <!-- <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_Main_Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
 
         app:fabSize="normal"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
+        app:srcCompat="@android:drawable/ic_menu_manage" />-->
 
     <!--
     <android.support.design.widget.FloatingActionButton

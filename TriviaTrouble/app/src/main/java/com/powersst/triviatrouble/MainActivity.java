@@ -3,23 +3,17 @@ package com.powersst.triviatrouble;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import com.powersst.triviatrouble.utils.NetworkUtils;
-import com.powersst.triviatrouble.utils.OpenTriviaUtils;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
@@ -53,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         // Capture references
         mSavedInstanceState = savedInstanceState;
         mBtnBegin = (Button) findViewById(R.id.btn_Main_Begin);
-        mFabSettings = (FloatingActionButton) findViewById(R.id.fab_Main_Settings);
+        //mFabSettings = (FloatingActionButton) findViewById(R.id.fab_Main_Settings);
 //        mFabLeaderboard = (FloatingActionButton) findViewById(R.id.fab_Main_Leaderboard);
 
 
@@ -68,7 +62,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        mFabSettings.setOnClickListener(new FloatingActionButton.OnClickListener()
+        /*mFabSettings.setOnClickListener(new FloatingActionButton.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -76,7 +70,7 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = new Intent(v.getContext(), SettingsActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
 //        mFabLeaderboard.setOnClickListener(new FloatingActionButton.OnClickListener()
 //        {
@@ -87,6 +81,25 @@ public class MainActivity extends AppCompatActivity
 //                startActivity(intent);
 //            }
 //        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, SettingsActivity.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     /**
