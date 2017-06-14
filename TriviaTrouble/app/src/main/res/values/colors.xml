@@ -8,4 +8,8 @@
     <color name="colorAnswerButton_Pressed">#E6AF2E</color>
     <color name="colorAnswerButton_CorrectAnswer">#2BC016</color>
     <color name="colorAnswerButton_IncorrectAnswer">#E53D00</color>
+
+    <color name="colorPrimaryAlt">#6B2737</color>
+    <color name="colorPrimaryDarkAlt">#1B2D2A</color>
+    <color name="colorAccentAlt">#CEFF1A</color>
 </resources>

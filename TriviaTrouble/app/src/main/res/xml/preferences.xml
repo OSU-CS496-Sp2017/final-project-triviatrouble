@@ -4,6 +4,7 @@
     >
 
     <ListPreference
+        android:name="ThemePref"
         android:key="@string/preferences_theme_key"
         android:summary="%s"
         android:title="@string/preferences_theme_title"
