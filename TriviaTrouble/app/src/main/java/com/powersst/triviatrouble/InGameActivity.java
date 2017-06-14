@@ -2,12 +2,18 @@ package com.powersst.triviatrouble;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,8 +47,32 @@ public class InGameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
+
+        if(themeKey.equals("AppTheme")){
+            setTheme(R.style.Default);
+        }
+        else if (themeKey.equals("AppThemeAlt")){
+            setTheme(R.style.AppThemeAlt);
+        }
+        else{
+            setTheme(R.style.Default);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_game);
+
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
+//
+//        Log.d("InGameActivity", themeKey);
+//
+//        LinearLayout bgElement = (LinearLayout) findViewById(R.id.container);
+//
+//        bgElement.setBackgroundColor(getResources().getColor(R.color.colorPrimaryAlt));
+
+
+
 
         mTitleTV = (TextView) findViewById(R.id.titleTV);
         mQuestionTV = (TextView) findViewById(R.id.questionTV);

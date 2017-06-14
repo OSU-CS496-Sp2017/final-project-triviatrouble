@@ -11,5 +11,7 @@
 
     <color name="colorPrimaryAlt">#6B2737</color>
     <color name="colorPrimaryDarkAlt">#1B2D2A</color>
-    <color name="colorAccentAlt">#CEFF1A</color>
+    <color name="colorBackgroundAlt">#292929</color>
+    <color name="colorTextAlt">#FFFFFF</color>
+    <color name="colorAccentAlt">#000</color>
 </resources>

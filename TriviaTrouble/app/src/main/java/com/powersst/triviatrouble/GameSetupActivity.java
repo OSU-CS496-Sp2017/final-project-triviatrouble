@@ -2,9 +2,11 @@ package com.powersst.triviatrouble;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,6 +44,18 @@ public class GameSetupActivity extends AppCompatActivity {
     // METHODS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
+
+        if(themeKey.equals("AppTheme")){
+            setTheme(R.style.Default);
+        }
+        else if (themeKey.equals("AppThemeAlt")){
+            setTheme(R.style.AppThemeAlt);
+        }
+        else{
+            setTheme(R.style.Default);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_setup);
 
@@ -76,6 +90,21 @@ public class GameSetupActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
+//        int themeKeyInt;
+//
+//        if(themeKey == "AppTheme"){
+//            setTheme(R.style.AppTheme);
+//            generateToast("Theme Key = " + themeKey);
+//        }
+//        else if (themeKey == "AppThemeAlt"){
+//            setTheme(R.style.AppThemeAlt);
+//            generateToast("Theme Key = " + themeKey);
+//        }
+
 
         initializeActivityElements();
     }

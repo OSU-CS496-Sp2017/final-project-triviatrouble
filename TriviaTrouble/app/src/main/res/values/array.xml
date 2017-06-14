@@ -148,7 +148,7 @@
     </string-array>
 
     <string-array name="preferences_theme_entryValues">
-        <item>AppTheme</item>
+        <item>Default</item>
         <item>AppThemeAlt</item>
     </string-array>
 </resources>

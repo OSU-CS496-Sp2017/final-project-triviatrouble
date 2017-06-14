@@ -1,19 +1,26 @@
 package com.powersst.triviatrouble;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.powersst.triviatrouble.utils.NetworkUtils;
 import com.powersst.triviatrouble.utils.OpenTriviaUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -25,8 +32,19 @@ public class MainActivity extends AppCompatActivity
 
     // METHODS
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String themeKey = sharedPreferences.getString(getString(R.string.preferences_theme_key), "");
+
+        if(themeKey.equals("AppTheme")){
+            setTheme(R.style.Default);
+        }
+        else if (themeKey.equals("AppThemeAlt")){
+            setTheme(R.style.AppThemeAlt);
+        }
+        else{
+            setTheme(R.style.Default);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,6 +55,7 @@ public class MainActivity extends AppCompatActivity
         mBtnBegin = (Button) findViewById(R.id.btn_Main_Begin);
         mFabSettings = (FloatingActionButton) findViewById(R.id.fab_Main_Settings);
 //        mFabLeaderboard = (FloatingActionButton) findViewById(R.id.fab_Main_Leaderboard);
+
 
         // Assign actions
         mBtnBegin.setOnClickListener(new Button.OnClickListener()
@@ -69,6 +88,41 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
     }
+
+    /**
+     * Generates and displays a toast.
+     * Ref: https://developer.android.com/guide/topics/ui/notifiers/toasts.html
+     *
+     * @author  Makiah Merritt <merrittm@oregonstate.edu>
+     * @param   toastContext    context for the toast
+     * @param   toastMessage    text for the toast
+     * @param   toastDuration   toast's duration
+     * @return  none
+     */
+    public void generateToast(Context toastContext, String toastMessage, int toastDuration)
+    {
+        Context context = (toastContext == null ? getApplicationContext() : toastContext);
+        String message = (toastMessage == null ? "ERROR: No toast message provided" : toastMessage);
+        int duration = (toastDuration == 0 ? Toast.LENGTH_LONG : toastDuration);
+        Toast toast = Toast.makeText(context, message, duration);
+        toast.setGravity(Gravity.BOTTOM, 0, -24);
+        toast.show();
+    } /*-- /generateToast() declaration --*/
+
+    /**
+     * Overloads generateToast, to only receive the message. Default duration
+     * is Toast.LENGTH_LONG and default context is the applications.
+     *
+     * @author  Makiah Merritt <merrittm@oregonstate.edu>
+     * @param   toastMessage
+     * @return  none
+     */
+    public void generateToast(String toastMessage)
+    {
+        String message = (toastMessage == null ? "ERROR: No toast message provided" : toastMessage);
+        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
+    } /*-- /generateToast() declaration --*/
 }
 /*
         doOpenTriviaSearch();
